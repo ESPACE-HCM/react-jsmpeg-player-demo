@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import JSMpeg from '@cycjimmy/jsmpeg-player';
+import JSMpeg from 'jsmpeg-fast-player';
 
 export default class JsmpegPlayer extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class JsmpegPlayer extends Component {
 
   render() {
     return (
-      <div
+      <div data-url={this.props.videoUrl}
         className={this.props.wrapperClassName}
         ref={videoWrapper => this.els.videoWrapper = videoWrapper}>
       </div>

@@ -4,7 +4,7 @@ import './App.css';
 import JsmpegPlayer from './components/JsmpegPlayer';
 
 const videoOptions = {
-  poster: 'https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg'
+  video:true,autoplay:true,audio:false,loop: true
 };
 
 const videoOverlayOptions = {};
@@ -17,7 +17,7 @@ function App() {
       <header className="App-header">
         <JsmpegPlayer
           wrapperClassName="video-wrapper"
-          videoUrl="https://cycjimmy.github.io/staticFiles/media/big_buck_bunny_640x360.ts"
+          videoUrl="ws://localhost:8001"
           options={videoOptions}
           overlayOptions={videoOverlayOptions}
           onRef={ref => jsmpegPlayer = ref}
