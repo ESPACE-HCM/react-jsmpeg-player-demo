@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import JSMpeg from 'jsmpeg-fast-player';
+import JSMpeg from '@cycjimmy/jsmpeg-player';
 
 export default class JsmpegPlayer extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {}
     this.els = {
       videoWrapper: null,
     };
@@ -12,10 +12,15 @@ export default class JsmpegPlayer extends Component {
 
   render() {
     return (
-      <div data-url={this.props.videoUrl}
+      <>
+      <div
         className={this.props.wrapperClassName}
         ref={videoWrapper => this.els.videoWrapper = videoWrapper}>
       </div>
+      {this.state.imageURL ? <img src={this.state.imageURL} alt="capture"/> : 
+        <button onClick={() => this.screenShot()}>Capture</button>
+      }
+      </>
     );
   };
 
@@ -49,5 +54,9 @@ export default class JsmpegPlayer extends Component {
   destroy() {
     this.video.destroy();
   };
+  screenShot() {
+    const url = this.video.els.canvas.toDataURL();
+    this.setState({imageURL: url});
+  }
 };
 
